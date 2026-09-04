@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: okschool-frontend
+    env: static
+    buildCommand: pnpm install && pnpm build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_SUPABASE_URL
+        value: https://revrmdtnffgnmnqytedr.supabase.co
+      - key: VITE_SUPABASE_ANON_KEY
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJldnJtZHRuZmZnbm1ucXl0ZWRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI4MDYyOTYsImV4cCI6MjA5ODM4MjI5Nn0.d_cw9bytgHl9BvN-SSASb6IJDuuliJg6kNOGUyxS_II
+      - key: VITE_API_URL
+        value: https://okschool-backend.onrender.com
+    routes:
+      - type: serve
+        source: /sitemap.xml
+        destination: /sitemap.xml
+      - type: rewrite
+        source: /*
+        destination: /index.html
