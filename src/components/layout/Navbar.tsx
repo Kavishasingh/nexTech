@@ -57,56 +57,56 @@ export function Navbar() {
         <div className="flex items-center gap-6">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden text-[#0F2942] hover:bg-slate-100" data-testid="button-mobile-menu">
+              <Button variant="ghost" size="icon" className="md:hidden text-[#1E3A8A] hover:bg-slate-100" data-testid="button-mobile-menu">
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle Menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-[300px] sm:w-[400px] bg-white border-slate-200">
             <nav className="flex flex-col gap-4 mt-8">
-              <Link href="/" className="text-lg font-medium text-[#0F2942] hover:text-[#D97706] transition-colors">Home</Link>
-              <Link href="/mock-tests" className="text-lg font-medium text-[#0F2942] hover:text-[#D97706] transition-colors">Mock Tests</Link>
-              <Link href="/amazon-store" className="text-lg font-medium text-[#0F2942] hover:text-[#D97706] transition-colors">Amazon Store</Link>
+              <Link href="/" className="text-lg font-medium text-[#1E3A8A] hover:text-[#1E40AF] transition-colors">Home</Link>
+              <Link href="/mock-tests" className="text-lg font-medium text-[#1E3A8A] hover:text-[#1E40AF] transition-colors">Mock Tests</Link>
+              <Link href="/amazon-store" className="text-lg font-medium text-[#1E3A8A] hover:text-[#1E40AF] transition-colors">Amazon Store</Link>
               {isAuthenticated && (
                 <>
-                  <Link href="/mock-test-history" className="text-lg font-medium text-[#0F2942] hover:text-[#D97706] transition-colors">Mock Test History</Link>
-                  <Link href="/purchase-history" className="text-lg font-medium text-[#0F2942] hover:text-[#D97706] transition-colors">Purchase History</Link>
+                  <Link href="/mock-test-history" className="text-lg font-medium text-[#1E3A8A] hover:text-[#1E40AF] transition-colors">Mock Test History</Link>
+                  <Link href="/purchase-history" className="text-lg font-medium text-[#1E3A8A] hover:text-[#1E40AF] transition-colors">Purchase History</Link>
                 </>
               )}
-              {isAdmin && <Link href="/admin" className="text-lg font-medium text-[#0F2942] hover:text-[#D97706] transition-colors">Admin Panel</Link>}
+              {isAdmin && <Link href="/admin" className="text-lg font-medium text-[#1E3A8A] hover:text-[#1E40AF] transition-colors">Admin Panel</Link>}
               {isAuthenticated && (
                 <>
                   <div className="flex items-center gap-2 text-sm text-slate-500">
                     <User className="h-4 w-4" />
                     <span>{userEmail}</span>
                   </div>
-                  <Button variant="outline" size="sm" onClick={handleLogout} className="w-full border-slate-200 text-[#0F2942] hover:bg-slate-50">
+                  <Button variant="outline" size="sm" onClick={handleLogout} className="w-full border-slate-200 text-[#1E3A8A] hover:bg-slate-50">
                     <LogOut className="h-4 w-4 mr-2" />
                     Logout
                   </Button>
                 </>
               )}
-              {!isAuthenticated && <Link href="/login" className="text-lg font-medium text-[#0F2942] hover:text-[#D97706] transition-colors">Login</Link>}
+              {!isAuthenticated && <Link href="/login" className="text-lg font-medium text-[#1E3A8A] hover:text-[#1E40AF] transition-colors">Login</Link>}
             </nav>
             </SheetContent>
           </Sheet>
 
           <Link href="/" className="flex items-center gap-2" data-testid="link-home">
             <img src="favicon.png" alt="nextech" className="h-9 w-9" />
-            <span className="font-serif font-bold text-xl tracking-tight text-[#0F2942]">nextech</span>
+            <span className="font-serif font-bold text-xl tracking-tight text-[#1E3A8A]">nextech</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
-            <Link href="/" className="hover:text-[#D97706] transition-colors">Home</Link>
-            <Link href="/mock-tests" className="hover:text-[#D97706] transition-colors">Mock Tests</Link>
-            <Link href="/amazon-store" className="hover:text-[#D97706] transition-colors">Amazon Store</Link>
+            <Link href="/" className="hover:text-[#1E40AF] transition-colors">Home</Link>
+            <Link href="/mock-tests" className="hover:text-[#1E40AF] transition-colors">Mock Tests</Link>
+            <Link href="/amazon-store" className="hover:text-[#1E40AF] transition-colors">Amazon Store</Link>
             {isAuthenticated && (
               <>
-                <Link href="/mock-test-history" className="hover:text-[#D97706] transition-colors">Mock Test History</Link>
-                <Link href="/purchase-history" className="hover:text-[#D97706] transition-colors">Purchase History</Link>
+                <Link href="/mock-test-history" className="hover:text-[#1E40AF] transition-colors">Mock Test History</Link>
+                <Link href="/purchase-history" className="hover:text-[#1E40AF] transition-colors">Purchase History</Link>
               </>
             )}
-            {isAdmin && <Link href="/admin" className="hover:text-[#D97706] transition-colors">Admin Panel</Link>}
+            {isAdmin && <Link href="/admin" className="hover:text-[#1E40AF] transition-colors">Admin Panel</Link>}
           </div>
         </div>
 
@@ -117,13 +117,13 @@ export function Navbar() {
               type="search"
               name="q"
               placeholder="Search notes, tests..."
-              className="pl-9 bg-slate-50 border-slate-200 text-slate-700 placeholder:text-slate-400 focus:border-[#D97706]"
+              className="pl-9 bg-slate-50 border-slate-200 text-slate-700 placeholder:text-slate-400 focus:border-[#1E40AF]"
             />
           </form>
           <div className="hidden sm:flex items-center gap-4">
             {!isAuthenticated ? (
               <Link href="/login">
-                <Button variant="outline" size="sm" data-testid="button-login" className="border-slate-200 text-[#0F2942] hover:bg-slate-50">Login</Button>
+                <Button variant="outline" size="sm" data-testid="button-login" className="border-slate-200 text-[#1E3A8A] hover:bg-slate-50">Login</Button>
               </Link>
             ) : (
               <>
@@ -136,7 +136,7 @@ export function Navbar() {
                   size="sm"
                   onClick={handleLogout}
                   data-testid="button-logout"
-                  className="border-slate-200 text-[#0F2942] hover:bg-slate-50"
+                  className="border-slate-200 text-[#1E3A8A] hover:bg-slate-50"
                 >
                   <LogOut className="h-4 w-4 mr-2" />
                   Logout
@@ -150,7 +150,7 @@ export function Navbar() {
               size="icon"
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               aria-label="Toggle theme"
-              className="border-slate-200 text-[#0F2942] hover:bg-slate-50"
+              className="border-slate-200 text-[#1E3A8A] hover:bg-slate-50"
             >
               {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
