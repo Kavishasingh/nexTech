@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from "react";
-import { Upload, FileText, X, CheckCircle2, AlertCircle, BookOpen, Award, TrendingUp, ChevronRight, BarChart3, Target, GraduationCap, Brain, Zap, Shield, Users, Flame, Trophy, ClipboardCheck, Rocket, ArrowRight, CircleDot, Star, Globe } from "lucide-react";
+import { Upload, FileText, X, CheckCircle2, AlertCircle, Award, Target, GraduationCap, Brain, Shield, Trophy, ChevronRight, MessageSquare, Send, Bot } from "lucide-react";
 
 const quizQuestions = [
   {
@@ -33,23 +33,23 @@ const quizQuestions = [
 const competencyCourses = {
   low: [
     { title: "iGOT Karmayogi: Fundamentals of Digital Governance", provider: "iGOT Karmayogi", duration: "4 weeks", level: "Foundation", icon: Shield },
-    { title: "iGOT Karmayogi: Digital Literacy Essentials", provider: "iGOT Karmayogi", duration: "3 weeks", level: "Foundation", icon: BookOpen },
+    { title: "iGOT Karmayogi: Digital Literacy Essentials", provider: "iGOT Karmayogi", duration: "3 weeks", level: "Foundation", icon: FileText },
   ],
   medium: [
     { title: "iGOT Karmayogi: Advanced Web Development for Gov", provider: "iGOT Karmayogi", duration: "6 weeks", level: "Intermediate", icon: Target },
-    { title: "iGOT Karmayogi: Data Structures Deep Dive", provider: "iGOT Karmayogi", duration: "5 weeks", level: "Intermediate", icon: BarChart3 },
+    { title: "iGOT Karmayogi: Data Structures Deep Dive", provider: "iGOT Karmayogi", duration: "5 weeks", level: "Intermediate", icon: Award },
   ],
   high: [
-    { title: "iGOT Karmayogi: System Design Mastery", provider: "iGOT Karmayogi", duration: "8 weeks", level: "Advanced", icon: Rocket },
+    { title: "iGOT Karmayogi: System Design Mastery", provider: "iGOT Karmayogi", duration: "8 weeks", level: "Advanced", icon: GraduationCap },
     { title: "iGOT Karmayogi: AI & Machine Learning Ops", provider: "iGOT Karmayogi", duration: "10 weeks", level: "Advanced", icon: Brain },
   ],
 };
 
 const skillMatrixData = [
   { skill: "Technical Aptitude", current: 0, target: 85, color: "bg-[#D97706]" },
-  { skill: "Communication", current: 0, target: 80, color: "bg-[#F59E0B]" },
+  { skill: "Communication", current: 0, target: 80, color: "bg-[#D97706]" },
   { skill: "Problem Solving", current: 0, target: 90, color: "bg-[#D97706]" },
-  { skill: "Domain Knowledge", current: 0, target: 75, color: "bg-[#F59E0B]" },
+  { skill: "Domain Knowledge", current: 0, target: 75, color: "bg-[#D97706]" },
   { skill: "Digital Literacy", current: 0, target: 88, color: "bg-[#D97706]" },
 ];
 
@@ -231,7 +231,7 @@ export default function SIHLearningPlatform() {
   return (
     <div className="min-h-[calc(100dvh-64px)] bg-[#F8FAFC]">
       <div className="mx-auto max-w-7xl space-y-6 p-4 md:p-6 lg:p-8">
-        <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+        <div className="rounded border border-slate-200 bg-white px-4 py-3">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-1">
@@ -244,7 +244,7 @@ export default function SIHLearningPlatform() {
               </span>
             </div>
             <div className="inline-flex w-fit items-center gap-2 rounded-full border border-[#0F2942]/10 bg-[#0F2942]/5 px-3 py-1 text-xs font-semibold text-[#0F2942]">
-              <Globe className="h-3.5 w-3.5" />
+              <Bot className="h-3.5 w-3.5" />
               nextech Learning Platform
             </div>
           </div>
@@ -260,47 +260,35 @@ export default function SIHLearningPlatform() {
         </div>
 
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-all hover:shadow-md">
+          <div className="rounded border border-slate-200 bg-white p-4 shadow-sm">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-slate-500">Study Streak</p>
                 <p className="text-2xl font-bold text-[#0F2942]">{streakDays} Days</p>
               </div>
-              <div className="rounded-lg bg-orange-50 p-2">
-                <Flame className="h-5 w-5 text-[#D97706]" />
-              </div>
             </div>
           </div>
-          <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-all hover:shadow-md">
+          <div className="rounded border border-slate-200 bg-white p-4 shadow-sm">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-slate-500">Skill Mastery</p>
                 <p className="text-2xl font-bold text-[#0F2942]">{masteryScore}%</p>
               </div>
-              <div className="rounded-lg bg-amber-50 p-2">
-                <Trophy className="h-5 w-5 text-[#D97706]" />
-              </div>
             </div>
           </div>
-          <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-all hover:shadow-md">
+          <div className="rounded border border-slate-200 bg-white p-4 shadow-sm">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-slate-500">Quizzes Done</p>
                 <p className="text-2xl font-bold text-[#0F2942]">{quizzesCompleted}</p>
               </div>
-              <div className="rounded-lg bg-emerald-50 p-2">
-                <ClipboardCheck className="h-5 w-5 text-emerald-600" />
-              </div>
             </div>
           </div>
-          <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-all hover:shadow-md">
+          <div className="rounded border border-slate-200 bg-white p-4 shadow-sm">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-slate-500">iGOT Credits</p>
                 <p className="text-2xl font-bold text-[#0F2942]">{creditsEarned}</p>
-              </div>
-              <div className="rounded-lg bg-blue-50 p-2">
-                <Star className="h-5 w-5 text-blue-600" />
               </div>
             </div>
           </div>
@@ -308,13 +296,13 @@ export default function SIHLearningPlatform() {
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <div className="space-y-6">
-            <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="rounded border border-slate-200 bg-white p-6 shadow-sm">
               <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-[#0F2942]">
                 <Upload className="h-5 w-5 text-[#D97706]" />
                 PDF Study Material Upload
               </h2>
               <div
-                className={`relative rounded-lg border-2 border-dashed p-8 text-center transition-colors ${
+                className={`relative rounded border-2 border-dashed p-8 text-center transition-colors ${
                   isDragging ? "border-[#D97706] bg-amber-50" : "border-slate-300 hover:border-[#D97706]"
                 }`}
                 onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
@@ -336,7 +324,7 @@ export default function SIHLearningPlatform() {
                 />
                 {pdfFile ? (
                   <div className="flex flex-col items-center gap-3">
-                    <div className="flex items-center gap-3 rounded-lg bg-slate-50 px-4 py-2">
+                    <div className="flex items-center gap-3 rounded bg-slate-50 px-4 py-2">
                       <FileText className="h-8 w-8 text-red-500" />
                       <div className="text-left">
                         <p className="font-medium text-slate-800">{pdfFile.name}</p>
@@ -365,7 +353,7 @@ export default function SIHLearningPlatform() {
               </div>
             </div>
 
-            <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="rounded border border-slate-200 bg-white p-6 shadow-sm">
               <div className="mb-6 flex items-center justify-between">
                 <h2 className="flex items-center gap-2 text-lg font-semibold text-[#0F2942]">
                   <Award className="h-5 w-5 text-[#D97706]" />
@@ -384,7 +372,7 @@ export default function SIHLearningPlatform() {
                   <p className="mb-4 text-slate-600">Test your knowledge with 3 quick questions.</p>
                   <button
                     onClick={() => setQuizStarted(true)}
-                    className="rounded-lg bg-[#D97706] px-6 py-2 font-semibold text-white hover:bg-[#B45309]"
+                    className="rounded bg-[#D97706] px-6 py-2 font-semibold text-white hover:bg-[#B45309]"
                   >
                     Start Quiz
                   </button>
@@ -398,7 +386,7 @@ export default function SIHLearningPlatform() {
                     />
                   </div>
 
-                  <div className="rounded-lg bg-slate-50 p-6">
+                  <div className="rounded bg-slate-50 p-6">
                     <p className="mb-4 text-lg font-medium text-slate-800">
                       {quizQuestions[currentQuestion].question}
                     </p>
@@ -414,7 +402,7 @@ export default function SIHLearningPlatform() {
                             key={idx}
                             onClick={() => handleSelectAnswer(idx)}
                             disabled={quizSubmitted}
-                            className={`w-full rounded-lg border-2 px-4 py-3 text-left transition-all ${
+                            className={`w-full rounded border-2 px-4 py-3 text-left transition-all ${
                               isCorrect || showCorrect
                                 ? "border-emerald-500 bg-emerald-50"
                                 : isWrong
@@ -444,7 +432,7 @@ export default function SIHLearningPlatform() {
                     </div>
 
                     {showExplanation && !quizSubmitted && (
-                      <div className={`mt-4 rounded-lg border p-4 ${answerFeedback === "correct" ? "border-emerald-500/30 bg-emerald-50" : "border-red-500/30 bg-red-50"}`}>
+                      <div className={`mt-4 rounded border p-4 ${answerFeedback === "correct" ? "border-emerald-500/30 bg-emerald-50" : "border-red-500/30 bg-red-50"}`}>
                         <div className="flex items-start gap-2">
                           {answerFeedback === "correct" ? (
                             <CheckCircle2 className="mt-0.5 h-5 w-5 text-emerald-600" />
@@ -469,7 +457,7 @@ export default function SIHLearningPlatform() {
                       <button
                         onClick={handlePrev}
                         disabled={currentQuestion === 0}
-                        className="rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 disabled:opacity-50"
+                        className="rounded border border-slate-200 px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 disabled:opacity-50"
                       >
                         Previous
                       </button>
@@ -477,14 +465,14 @@ export default function SIHLearningPlatform() {
                         <button
                           onClick={handleSubmitQuiz}
                           disabled={selectedAnswers.filter(Boolean).length < quizQuestions.length}
-                          className="rounded-lg bg-[#D97706] px-6 py-2 font-semibold text-white hover:bg-[#B45309] disabled:opacity-50"
+                          className="rounded bg-[#D97706] px-6 py-2 font-semibold text-white hover:bg-[#B45309] disabled:opacity-50"
                         >
                           Submit Quiz
                         </button>
                       ) : (
                         <button
                           onClick={handleNext}
-                          className="rounded-lg bg-[#0F2942] px-6 py-2 font-semibold text-white hover:bg-[#0F2942]/90"
+                          className="rounded bg-[#0F2942] px-6 py-2 font-semibold text-white hover:bg-[#0F2942]/90"
                         >
                           Next <ChevronRight className="inline h-4 w-4" />
                         </button>
@@ -493,7 +481,7 @@ export default function SIHLearningPlatform() {
                   )}
 
                   {quizSubmitted && (
-                    <div className="rounded-xl border border-slate-200 bg-slate-50 p-6 text-center">
+                    <div className="rounded border border-slate-200 bg-slate-50 p-6 text-center">
                       <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-amber-50">
                         <Trophy className="h-8 w-8 text-[#D97706]" />
                       </div>
@@ -517,7 +505,7 @@ export default function SIHLearningPlatform() {
                           setShowExplanation(false);
                           setAnswerFeedback(null);
                         }}
-                        className="mt-4 rounded-lg bg-[#D97706] px-6 py-2 font-semibold text-white hover:bg-[#B45309]"
+                        className="mt-4 rounded bg-[#D97706] px-6 py-2 font-semibold text-white hover:bg-[#B45309]"
                       >
                         Retake Quiz
                       </button>
@@ -529,7 +517,7 @@ export default function SIHLearningPlatform() {
           </div>
 
           <div className="space-y-6">
-            <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="rounded border border-slate-200 bg-white p-6 shadow-sm">
               <h2 className="mb-6 flex items-center gap-2 text-lg font-semibold text-[#0F2942]">
                 <Target className="h-5 w-5 text-[#D97706]" />
                 Skill Gap Analysis Matrix
@@ -551,9 +539,9 @@ export default function SIHLearningPlatform() {
                 ))}
               </div>
               {quizSubmitted && (
-                <div className="mt-6 rounded-lg border border-[#D97706]/20 bg-amber-50 p-4">
+                <div className="mt-6 rounded border border-[#D97706]/20 bg-amber-50 p-4">
                   <div className="flex items-start gap-3">
-                    <Zap className="mt-0.5 h-5 w-5 text-[#D97706]" />
+                    <Shield className="mt-0.5 h-5 w-5 text-[#D97706]" />
                     <div>
                       <p className="text-sm font-semibold text-[#0F2942]">Competency Level</p>
                       <p className="text-sm text-slate-600">
@@ -569,9 +557,9 @@ export default function SIHLearningPlatform() {
               )}
             </div>
 
-            <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="rounded border border-slate-200 bg-white p-6 shadow-sm">
               <h2 className="mb-6 flex items-center gap-2 text-lg font-semibold text-[#0F2942]">
-                <Rocket className="h-5 w-5 text-[#D97706]" />
+                <Award className="h-5 w-5 text-[#D97706]" />
                 Visual Skill Gap Roadmap
               </h2>
               <div className="relative space-y-4">
@@ -589,10 +577,10 @@ export default function SIHLearningPlatform() {
                     <div key={idx} className="relative flex gap-4">
                       <div className="relative z-10">
                         <div className={`flex h-8 w-8 items-center justify-center rounded-full border-2 ${statusColors[milestone.status]} ${isActive ? "ring-2 ring-[#D97706]/30" : ""}`}>
-                          {isActive ? <CircleDot className="h-4 w-4 text-white" /> : <ArrowRight className="h-4 w-4 text-slate-400" />}
+                          {isActive ? <CheckCircle2 className="h-4 w-4 text-white" /> : <FileText className="h-4 w-4 text-slate-400" />}
                         </div>
                       </div>
-                      <div className={`flex-1 rounded-lg border p-4 transition-all ${isActive ? "border-[#D97706]/20 bg-amber-50" : "border-slate-200 bg-slate-50"}`}>
+                      <div className={`flex-1 rounded border p-4 transition-all ${isActive ? "border-[#D97706]/20 bg-amber-50" : "border-slate-200 bg-slate-50"}`}>
                         <div className="flex items-center gap-2">
                           <span className="text-xs font-semibold uppercase tracking-wider text-[#0F2942]">{milestone.phase}</span>
                           {isActive && <span className="rounded-full bg-[#D97706]/10 px-2 py-0.5 text-[10px] font-semibold text-[#D97706]">Current</span>}
@@ -608,7 +596,7 @@ export default function SIHLearningPlatform() {
             </div>
 
             {quizSubmitted && (
-              <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+              <div className="rounded border border-slate-200 bg-white p-6 shadow-sm">
                 <h2 className="mb-6 flex items-center gap-2 text-lg font-semibold text-[#0F2942]">
                   <GraduationCap className="h-5 w-5 text-[#D97706]" />
                   iGOT Karmayogi Course Recommendations
@@ -617,10 +605,10 @@ export default function SIHLearningPlatform() {
                   {recommendedCourses.map((course, idx) => {
                     const IconComponent = course.icon;
                     return (
-                      <div key={idx} className="rounded-lg border border-slate-200 bg-slate-50 p-5 transition-all hover:border-[#D97706]/30 hover:bg-white hover:shadow-sm">
+                      <div key={idx} className="rounded border border-slate-200 bg-slate-50 p-5 transition-all hover:border-[#D97706]/30 hover:bg-white hover:shadow-sm">
                         <div className="mb-3 flex items-start justify-between">
                           <div className="flex items-center gap-2">
-                            <div className="rounded-lg bg-[#D97706]/10 p-2">
+                            <div className="rounded bg-[#D97706]/10 p-2">
                               <IconComponent className="h-5 w-5 text-[#D97706]" />
                             </div>
                             <span className="text-xs font-medium uppercase tracking-wider text-[#D97706]">
@@ -644,7 +632,7 @@ export default function SIHLearningPlatform() {
             )}
 
             {!quizSubmitted && (
-              <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+              <div className="rounded border border-slate-200 bg-white p-6 shadow-sm">
                 <div className="flex flex-col items-center justify-center py-8 text-center">
                   <Shield className="mb-3 h-10 w-10 text-[#D97706]/40" />
                   <p className="text-sm text-slate-600">Complete the quiz to unlock skill gap analysis and personalized iGOT Karmayogi course recommendations.</p>
@@ -656,19 +644,19 @@ export default function SIHLearningPlatform() {
 
         {chatOpen && (
           <div className="fixed inset-0 z-50">
-            <div className="absolute inset-0 bg-slate-900/20 backdrop-blur-sm" onClick={() => setChatOpen(false)} />
+            <div className="absolute inset-0 bg-slate-900/20" onClick={() => setChatOpen(false)} />
             <div className="absolute right-0 top-0 h-full w-full max-w-md border-l border-slate-200 bg-white shadow-xl">
               <div className="flex h-full flex-col">
                 <div className="border-b border-slate-200 bg-[#0F2942] px-4 py-3">
                   <div className="flex items-center justify-between">
                     <div>
                       <h3 className="font-semibold text-white">nextech Karmayogi AI Guide</h3>
-                      <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-2 py-0.5 text-[10px] font-semibold text-amber-300">
+                      <span className="inline-flex items-center gap-1 rounded bg-white/10 px-2 py-0.5 text-[10px] font-semibold text-amber-300">
                         <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
                         Govt. Verified
                       </span>
                     </div>
-                    <button onClick={() => setChatOpen(false)} className="rounded-lg p-1 text-slate-300 hover:bg-white/10 hover:text-white">
+                    <button onClick={() => setChatOpen(false)} className="rounded p-1 text-slate-300 hover:bg-white/10 hover:text-white">
                       <X className="h-5 w-5" />
                     </button>
                   </div>
@@ -678,10 +666,10 @@ export default function SIHLearningPlatform() {
                   <div className="space-y-3">
                     {messages.map((msg, idx) => (
                       <div key={idx} className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
-                        <div className={`max-w-[85%] rounded-lg px-3 py-2 text-sm ${
+                        <div className={`max-w-[85%] rounded px-3 py-2 text-sm ${
                           msg.sender === "user"
-                            ? "rounded-br-sm bg-white border border-slate-200 text-slate-800 shadow-sm"
-                            : "rounded-bl-sm bg-white border border-slate-200 text-slate-700 shadow-sm"
+                            ? "rounded-br-sm bg-white border border-slate-200 text-slate-800"
+                            : "rounded-bl-sm bg-white border border-slate-200 text-slate-700"
                         }`}>
                           <p className="text-xs font-semibold text-[#0F2942] mb-1">{msg.sender === "user" ? "You" : "AI Assistant"}</p>
                           <p className="text-slate-700">{msg.text}</p>
@@ -708,10 +696,10 @@ export default function SIHLearningPlatform() {
                       value={inputText}
                       onChange={(e) => setInputText(e.target.value)}
                       placeholder="Ask about iGOT courses, skills, policies..."
-                      className="flex-1 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#D97706] focus:outline-none"
+                      className="flex-1 rounded border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#D97706] focus:outline-none"
                     />
-                    <button type="submit" className="rounded-lg bg-[#D97706] px-3 py-2 text-sm font-semibold text-white hover:bg-[#B45309]">
-                      Send
+                    <button type="submit" className="rounded bg-[#D97706] px-3 py-2 text-sm font-semibold text-white hover:bg-[#B45309]">
+                      <Send className="h-4 w-4" />
                     </button>
                   </form>
                 </div>
@@ -722,12 +710,9 @@ export default function SIHLearningPlatform() {
 
         <button
           onClick={() => setChatOpen(true)}
-          className="fixed bottom-6 right-6 z-40 flex items-center gap-2 rounded-full bg-[#0F2942] px-4 py-2 text-sm font-semibold text-white shadow-lg hover:bg-[#0F2942]/90"
+          className="fixed bottom-6 right-6 z-40 flex items-center gap-2 rounded border border-[#D97706] bg-white px-4 py-2 text-sm font-semibold text-[#D97706] shadow-sm hover:bg-amber-50"
         >
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="absolute inset-0 rounded-full bg-[#D97706] animate-ping" />
-            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#D97706]" />
-          </span>
+          <MessageSquare className="h-4 w-4" />
           Ask AI
         </button>
       </div>
