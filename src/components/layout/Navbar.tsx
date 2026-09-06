@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Menu, Search, User, LogOut, Sun, Moon, History, BookOpen } from "lucide-react";
+import { Menu, Search, User, LogOut, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -65,8 +65,6 @@ export function Navbar() {
             <SheetContent side="left" className="w-[300px] sm:w-[400px] bg-white border-slate-200">
             <nav className="flex flex-col gap-4 mt-8">
               <Link href="/" className="text-lg font-medium text-[#1E3A8A] hover:text-[#1E40AF] transition-colors">Home</Link>
-              <Link href="/mock-tests" className="text-lg font-medium text-[#1E3A8A] hover:text-[#1E40AF] transition-colors">Mock Tests</Link>
-              <Link href="/amazon-store" className="text-lg font-medium text-[#1E3A8A] hover:text-[#1E40AF] transition-colors">Amazon Store</Link>
               {isAuthenticated && (
                 <>
                   <Link href="/mock-test-history" className="text-lg font-medium text-[#1E3A8A] hover:text-[#1E40AF] transition-colors">Mock Test History</Link>
@@ -92,14 +90,12 @@ export function Navbar() {
           </Sheet>
 
           <Link href="/" className="flex items-center gap-2" data-testid="link-home">
-            <img src="favicon.png" alt="nextech" className="h-9 w-9" />
+            <img src="nextech-logo.png" alt="nextech" className="h-9 w-9" />
             <span className="font-serif font-bold text-xl tracking-tight text-[#1E3A8A]">nextech</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
             <Link href="/" className="hover:text-[#1E40AF] transition-colors">Home</Link>
-            <Link href="/mock-tests" className="hover:text-[#1E40AF] transition-colors">Mock Tests</Link>
-            <Link href="/amazon-store" className="hover:text-[#1E40AF] transition-colors">Amazon Store</Link>
             {isAuthenticated && (
               <>
                 <Link href="/mock-test-history" className="hover:text-[#1E40AF] transition-colors">Mock Test History</Link>
@@ -116,7 +112,7 @@ export function Navbar() {
             <Input
               type="search"
               name="q"
-              placeholder="Search notes, tests..."
+              placeholder="Search..."
               className="pl-9 bg-slate-50 border-slate-200 text-slate-700 placeholder:text-slate-400 focus:border-[#1E40AF]"
             />
           </form>

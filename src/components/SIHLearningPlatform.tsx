@@ -231,25 +231,6 @@ export default function SIHLearningPlatform() {
   return (
     <div className="min-h-[calc(100dvh-64px)] bg-slate-50">
       <div className="mx-auto max-w-7xl space-y-6 p-4 md:p-6 lg:p-8">
-        <div className="rounded border border-slate-200 bg-white px-4 py-3">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-1">
-                <span className="h-2.5 w-6 rounded-full bg-[#FF9933]" />
-                <span className="h-2.5 w-6 rounded-full bg-white" />
-                <span className="h-2.5 w-6 rounded-full bg-[#138808]" />
-              </div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-[#1E3A8A]">
-                Digital India / iGOT Karmayogi Compliant
-              </span>
-            </div>
-            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-[#1E3A8A]/10 bg-[#1E3A8A]/5 px-3 py-1 text-xs font-semibold text-[#1E3A8A]">
-              <Bot className="h-3.5 w-3.5" />
-              nextech Learning Platform
-            </div>
-          </div>
-        </div>
-
         <div className="text-center">
           <h1 className="text-3xl font-bold text-[#1E3A8A] md:text-4xl">
             Smart Competency <span className="text-[#1E40AF]">Development</span> Dashboard

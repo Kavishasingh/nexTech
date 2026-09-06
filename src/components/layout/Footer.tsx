@@ -7,7 +7,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <img src="favicon.png" alt="nextech" className="h-9 w-9" />
+              <img src="nextech-logo.png" alt="nextech" className="h-9 w-9" />
               <span className="font-serif font-bold text-xl tracking-tight text-[#1E3A8A]">nextech</span>
             </Link>
             <p className="text-slate-600 max-w-sm">
