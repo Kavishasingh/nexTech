@@ -77,6 +77,48 @@ export default function SIHLearningPlatform() {
   const quizzesCompleted = 12;
   const creditsEarned = 450;
 
+  const [chatOpen, setChatOpen] = useState(false);
+  const [messages, setMessages] = useState<{ sender: "user" | "ai"; text: string }[]>([
+    {
+      sender: "ai",
+      text: "Namaste! I am your nextech Karmayogi AI Guide. How can I help you with your learning journey today?",
+    },
+  ]);
+  const [inputText, setInputText] = useState("");
+  const promptChips = [
+    "Suggest iGOT courses for my gap",
+    "How to improve my competency score?",
+    "Explain latest civil service training policy",
+  ];
+
+  const aiResponses: Record<string, string> = {
+    "Suggest iGOT courses for my gap": "Based on your current skill gap analysis, I recommend starting with iGOT Karmayogi Foundation courses in Digital Literacy and Technical Aptitude. Would you like me to show specific course recommendations?",
+    "How to improve my competency score?": "To improve your competency score, focus on: 1) Regular practice with domain-specific quizzes, 2) Completing recommended iGOT courses, 3) Tracking your progress weekly, and 4) Applying learned skills in practical scenarios.",
+    "Explain latest civil service training policy": "The latest civil service training policy emphasizes competency-based learning through iGOT Karmayogi platform. Key highlights include mandatory digital literacy training, periodic skill assessments, and personalized learning pathways based on role-specific competencies.",
+  };
+
+  const getAIResponse = (userMessage: string): string => {
+    const lowerMessage = userMessage.toLowerCase();
+    if (lowerMessage.includes("course") || lowerMessage.includes("suggest") || lowerMessage.includes("gap")) {
+      return aiResponses["Suggest iGOT courses for my gap"];
+    } else if (lowerMessage.includes("improve") || lowerMessage.includes("score") || lowerMessage.includes("competency")) {
+      return aiResponses["How to improve my competency score?"];
+    } else if (lowerMessage.includes("policy") || lowerMessage.includes("civil service") || lowerMessage.includes("training")) {
+      return aiResponses["Explain latest civil service training policy"];
+    }
+    return "Thank you for your question. As your AI assistant, I can help you with iGOT Karmayogi course recommendations, skill gap analysis, competency improvement strategies, and government training policy information. Please select a quick prompt or ask your specific question.";
+  };
+
+  const handleSend = useCallback((text: string) => {
+    if (!text.trim()) return;
+    const userMessage = text.trim();
+    setMessages((prev) => [...prev, { sender: "user", text: userMessage }]);
+    setInputText("");
+    setTimeout(() => {
+      setMessages((prev) => [...prev, { sender: "ai", text: getAIResponse(userMessage) }]);
+    }, 600);
+  }, []);
+
   useEffect(() => {
     audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
     return () => {
@@ -611,6 +653,83 @@ export default function SIHLearningPlatform() {
             )}
           </div>
         </div>
+
+        {chatOpen && (
+          <div className="fixed inset-0 z-50">
+            <div className="absolute inset-0 bg-slate-900/20 backdrop-blur-sm" onClick={() => setChatOpen(false)} />
+            <div className="absolute right-0 top-0 h-full w-full max-w-md border-l border-slate-200 bg-white shadow-xl">
+              <div className="flex h-full flex-col">
+                <div className="border-b border-slate-200 bg-[#0F2942] px-4 py-3">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="font-semibold text-white">nextech Karmayogi AI Guide</h3>
+                      <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-2 py-0.5 text-[10px] font-semibold text-amber-300">
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                        Govt. Verified
+                      </span>
+                    </div>
+                    <button onClick={() => setChatOpen(false)} className="rounded-lg p-1 text-slate-300 hover:bg-white/10 hover:text-white">
+                      <X className="h-5 w-5" />
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex-1 overflow-y-auto bg-slate-50 p-4">
+                  <div className="space-y-3">
+                    {messages.map((msg, idx) => (
+                      <div key={idx} className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
+                        <div className={`max-w-[85%] rounded-lg px-3 py-2 text-sm ${
+                          msg.sender === "user"
+                            ? "rounded-br-sm bg-white border border-slate-200 text-slate-800 shadow-sm"
+                            : "rounded-bl-sm bg-white border border-slate-200 text-slate-700 shadow-sm"
+                        }`}>
+                          <p className="text-xs font-semibold text-[#0F2942] mb-1">{msg.sender === "user" ? "You" : "AI Assistant"}</p>
+                          <p className="text-slate-700">{msg.text}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="border-t border-slate-200 bg-white p-3">
+                  <div className="mb-2 flex gap-2 overflow-x-auto pb-1">
+                    {promptChips.map((chip) => (
+                      <button
+                        key={chip}
+                        onClick={() => handleSend(chip)}
+                        className="whitespace-nowrap rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-[#0F2942] hover:border-[#D97706] hover:text-[#D97706]"
+                      >
+                        {chip}
+                      </button>
+                    ))}
+                  </div>
+                  <form onSubmit={(e) => { e.preventDefault(); handleSend(inputText); }} className="flex gap-2">
+                    <input
+                      value={inputText}
+                      onChange={(e) => setInputText(e.target.value)}
+                      placeholder="Ask about iGOT courses, skills, policies..."
+                      className="flex-1 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#D97706] focus:outline-none"
+                    />
+                    <button type="submit" className="rounded-lg bg-[#D97706] px-3 py-2 text-sm font-semibold text-white hover:bg-[#B45309]">
+                      Send
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <button
+          onClick={() => setChatOpen(true)}
+          className="fixed bottom-6 right-6 z-40 flex items-center gap-2 rounded-full bg-[#0F2942] px-4 py-2 text-sm font-semibold text-white shadow-lg hover:bg-[#0F2942]/90"
+        >
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="absolute inset-0 rounded-full bg-[#D97706] animate-ping" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#D97706]" />
+          </span>
+          Ask AI
+        </button>
       </div>
     </div>
   );
